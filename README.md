@@ -1,5 +1,7 @@
 # 2D Geometric Shapes Dataset
 
+![Thumbnail](thumbnail.jpg)
+
 ## Description
 
 This repository contains a Python script used to generate a dataset of 2D geometric shapes, along with the dataset itself. The dataset includes 16 different geometric shapes, each randomly oriented and positioned within a 224x224 pixel image.
