@@ -26,6 +26,15 @@ SHAPES = [
     "star",
 ]
 
+# Shapes that should only rotate at 0° or 90°
+FIXED_ANGLE_SHAPES = [
+    "square",
+    "rectangle",
+    "parallelogram",
+    "rhombus",
+    "trapezoid",
+    "kite",
+]
 
 OUTPUT_DIR = "./2D_Geometric_Shapes_Dataset"
 
@@ -126,6 +135,7 @@ def draw_shape(shape, color, size):
             "decagon": 10,
         }[shape]
         draw_regular_polygon(shape_draw, cx, cy, size // 2, sides, color)
+
     elif shape == "star":
         outer_radius = size // 2
         inner_radius = size // 4
@@ -160,7 +170,12 @@ def create_image(shape):
     )
 
     size = random.randint(30, 100)
-    angle = random.uniform(0, 360)
+
+    # Determine angle based on shape type
+    if shape in FIXED_ANGLE_SHAPES:
+        angle = random.choice([0, 90, 180, 270])
+    else:
+        angle = random.randint(0, 360)
 
     # Create the shape image and rotate it
     shape_image = draw_shape(shape, color, size)
@@ -185,6 +200,5 @@ def generate_dataset():
 
 
 if __name__ == "__main__":
-    # generate_dataset()
-    print(len(SHAPES))
+    generate_dataset()
     print(f"Dataset generated in {OUTPUT_DIR}")
